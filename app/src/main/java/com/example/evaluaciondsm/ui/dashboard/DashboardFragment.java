@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -30,10 +31,14 @@ public class DashboardFragment extends Fragment {
         txt_url = binding.editTextText;
         webview = binding.webView1;
 
+
+
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                webview.loadUrl(txt_url.getText().toString());
+                WebViewClient client = new WebViewClient();
+                webview.setWebViewClient(client);
+                webview.loadUrl("https://" + txt_url.getText().toString());
 
             }
         });
